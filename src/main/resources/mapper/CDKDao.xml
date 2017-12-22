@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ysk521.dao.CDKDao">
+    <insert id="addCDK" parameterType="cn.ysk521.entity.CDK">
+        INSERT INTO CDK (cdk_value,create_time,use_time,delay_Day,who_use)VALUES (#{value},#{createTime},#{useTime},#{delayDay},#{whoUse})
+    </insert>
+    <delete id="deleteCDKByValue" >
+        DELETE FROM CDK WHERE value=#{value}
+    </delete>
+    <!--<resultMap id="cdks" type="java.util.List">-->
+
+    <!--</resultMap>-->
+    <select id="queryAllCDK" resultType="java.util.List">
+        SELECT * FROM cdk
+    </select>
+    <select id="queryCDKByValue" resultType="cn.ysk521.entity.CDK">
+        SELECT * FROM cdk WHERE cdk_value=#{cdkValue}
+    </select>
+    <update id="upadteCDK" parameterType="cn.ysk521.entity.CDK">
+        UPDATE cdk SET use_time=#{useTime},who_use=#{whoUse} WHERE cdk_value=#{cdkValue}
+    </update>
+</mapper>
